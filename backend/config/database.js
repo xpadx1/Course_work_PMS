@@ -1,8 +1,12 @@
 import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize('coursework', 'postgres', 'root', {
-  host: 'localhost',
-  dialect: 'postgres',
-});
+// const opts = {
+//   define: {
+//       //prevent sequelize from pluralizing table names
+//       freezeTableName: true
+//   }
+// }
+
+const sequelize = new Sequelize('postgres://postgres:root@localhost/coursework');
 
 export { sequelize };

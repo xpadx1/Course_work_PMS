@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-const User = sequelize.define("user", {
+const User = sequelize.define("users", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -12,8 +12,8 @@ const User = sequelize.define("user", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  age: {
-    type: Sequelize.INTEGER,
+  email: {
+    type: Sequelize.STRING,
     allowNull: false
   }
 });
