@@ -6,16 +6,20 @@ const User = sequelize.define("users", {
     type: Sequelize.INTEGER,
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false
+    allowNull: false,
   },
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false
-  }
+    allowNull: true,
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
 });
 // User.sync().then(() => {
 //   console.log('table created');
