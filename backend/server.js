@@ -16,15 +16,6 @@ app.get('/', (req, res) => {
   res.status(200).json('Server working');
 })
  
-// app.post('/', async (req, res) => {
-//   try {
-//     const {name, age} = req.body;
-//     const post = await User.create({name, age});
-//     res.json(post);
-//   } catch(e) {
-//     res.json(e)
-//   }
-// })
 
 app.use('/', router);
 

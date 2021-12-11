@@ -17,8 +17,5 @@ const Project = sequelize.define("projects", {
     allowNull: false
   }
 });
-// User.sync().then(() => {
-//   console.log('table created');
-// });
 
 export {Project};

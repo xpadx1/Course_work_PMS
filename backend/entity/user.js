@@ -16,13 +16,15 @@ const User = sequelize.define("users", {
     type: Sequelize.STRING,
     allowNull: true,
   },
+  role: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "EXECUTOR",
+  },
   password: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 });
-// User.sync().then(() => {
-//   console.log('table created');
-// });
 
 export {User};
