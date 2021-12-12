@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-const Project = sequelize.define("projects", {
+const Tasks = sequelize.define("tasks", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -10,12 +10,25 @@ const Project = sequelize.define("projects", {
   },
   name: {
     type: Sequelize.STRING,
+    allowNull: true
+  },
+  description: {
+    type: Sequelize.STRING,
     allowNull: false
   },
-  iduser: {
+  idcreator: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  idexecutor: {
+    type: Sequelize.INTEGER,
+    allowNull: true
+  },
+  type: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    defaultValue: "TODO",
   }
 });
 
-export {Project};
+export {Tasks};

@@ -1,8 +1,8 @@
-import { User } from './entity/user.js';
+import { User } from '../entity/user.js';
 import bcrypt from 'bcryptjs'
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
-import { option } from './config/jwt.js';
+import { option } from '../config/jwt.js';
 
 const generateToken = (id, role) => {
   const payload = {
@@ -66,17 +66,7 @@ class AuthController {
 
       const {name, password, email} = req.body;
       const users = await User.findAll();
-
-      // if(!user) {
-      //   return res.status(400).json({message: 'user with same name no found'});
-      // }
-
-      // const validPass = bcrypt.compareSync(password, user.password)
-      // if(!validPass) {
-      //   return res.status(400).json({message: 'wrong password'});
-      // }
-
-      // const token = generateToken(user.id);
+      
       return res.json({users});
 
     } catch(e) {

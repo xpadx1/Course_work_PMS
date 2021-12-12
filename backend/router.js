@@ -1,11 +1,13 @@
 import Router from 'express'
-import { Project } from './entity/project.js';
-import { AuthController } from './authController.js';
+import { Tasks } from './entity/task.js';
+import { AuthController } from './Controller/authController.js';
+import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
 
-const controller = new AuthController;
+const controllerAuth = new AuthController;
+const controllerTask = new taskController;
 
 const router = new Router();
 
@@ -13,32 +15,24 @@ const router = new Router();
 router.post('/registration', [
   check('name', 'Field "name" can not be empty').notEmpty(),
   check('password', 'Password must be greater than 4 lettrs').isLength({min:4})
-], controller.registration);
+], controllerAuth.registration);
 
-router.post('/login', controller.login);
+router.post('/login', controllerAuth.login);
 
 //users
-router.get('/users', checkJwt, controller.getAllUsers);
+router.get('/users', checkJwt, controllerAuth.getAllUsers);
 
 // some functions that access special roles (example: EXECUTOR) 
-//router.get('/users', checkRole(['EXECUTOR']), controller.getAllUsers);
+//router.get('/users', checkRole(['EXECUTOR']), SOME_FUNCTION);
 
 
-// project
-router.post('/project', async (req, res) => {
-    try {
-      const {name, iduser} = req.body;
-      const post = await Project.create({name, iduser});
-      res.json(post);
-    } catch(e) {
-      res.json(e)
-    }
-});
-router.get('/projectall', () => { console.log( 'router:  /project/:id' + ' get all projects') });
-router.get('/project/:id', () => { console.log( 'router:  /project/:id' + ' get project by id') });
-router.post('/project/solution', () => { console.log( 'router:  /project/solution' + ' post solution') });
-router.put('/project/solution', () => { console.log( 'router:  /project/solution' + ' update solution') });
-router.delete('/project/:id', () => { console.log( 'router:  /project/:id' + ' delete project by id') });
+// tasks
+router.post('/tasks', controllerTask.createtask);
+router.get('/tasks', controllerTask.getMyTasks); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getMyTasks
+router.put('/tasks', controllerTask.updataTaskType); // may be add validation checkRole(['EXECUTOR']) and delete check this in func updataTaskType
+router.get('/tasks/:id', controllerTask.getOneTask); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getOneTask
+
+router.delete('/tasks/:id', controllerTask.deleteTask); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getOneTask
 
 
 router.use((err, request, response, next) => {
