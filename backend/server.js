@@ -1,5 +1,4 @@
 import express from 'express'
-import Sequelize from 'sequelize';
 import { router } from './router.js';
 
 //Database

@@ -3,6 +3,7 @@ import bcrypt from 'bcryptjs'
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import { option } from '../config/jwt.js';
+import { mailer } from '../config/nodemailer.js';
 
 const generateToken = (id, role) => {
   const payload = {
@@ -29,6 +30,15 @@ class AuthController {
       // replace Sync hash to Async, use 'bcrypt.hash()'
       const hashPass = bcrypt.hashSync(password, 5);
       const post = await User.create({name, email, password: hashPass});
+
+      const message = {
+        to: email, // list of receivers
+        subject: "registration", // Subject line
+        text: "your account has been successfully created" // plain text body
+      }
+
+      mailer(message);
+
       res.json(post);
       
     } catch(e) {
