@@ -1,0 +1,73 @@
+.title{
+    font-size: 20px !important;
+    padding: 30px 0px 0px 10px;
+    color: white;
+}
+
+.header{
+    background: #2b2b38;
+}
+
+.user-data{
+    position: absolute;
+    text-align: right;
+    right: 40px;
+    top: 0px;
+    height: 60px;
+    width: 190px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.onHover{
+    background: rgb(110, 110, 110);
+    opacity: 1;
+    border-radius: 4px;
+}
+
+.logout{
+    text-align: left;
+    position: absolute;
+    background: #fff;
+    top: 100%;
+    width: 100%;
+    min-width: 78px;
+    left: 0px;
+    z-index: 1111;
+    border-color: #fff;
+    opacity: 0.9;
+
+    &:hover{
+        opacity: 1;
+    }
+}
+
+.sections{
+    position: absolute;
+    top: -3px;
+    left: 160px;
+    font-size: larger;
+    height: 62px;
+    width: 500px;
+}
+
+.nav-item{
+    float: left;
+    padding-right: 20px;
+    padding-top: 14px;
+    
+}
+
+.logo{
+    color: white;
+    position: absolute;
+    left: 60px;
+    top: 6px;
+    opacity: 1 !important;
+}
+
+.logo-wrapper{
+    cursor: pointer;
+    padding-left: 15px;
+    width: 120px;
+}

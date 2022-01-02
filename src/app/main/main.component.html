@@ -1,0 +1,36 @@
+<div class="header">
+    <div class="logo-wrapper">
+        <span class="logo material-icons">
+            flutter_dash
+        </span>
+        <p class = "title">C_W_PMS</p>
+    </div>
+    <nav class="sections">
+
+        <div class="nav-item">
+            <a>Tasks management</a>
+        </div>
+        
+        <div class="nav-item">
+            <a>Boards</a>
+        </div>
+
+        <div class="nav-item">
+            <a>Principal employes</a>
+        </div>
+
+    </nav>
+    <div class="user-data" #toggleButton [class.onHover] = "showLogout" (click)="over($event)">
+        <p #insideElement>
+            <span class="material-icons">
+                account_circle
+            </span>
+            Arsenii Shscastlyvyi
+        </p>
+        <button class = "logout" *ngIf = "showLogout">Logout</button>
+    </div>
+</div>
+
+<app-middle-title></app-middle-title>
+<app-board></app-board>
+

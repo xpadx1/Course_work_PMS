@@ -1,0 +1,46 @@
+<section class = "heading-section">
+    <h1 class="title is-1 has-text-centered">Planner</h1>
+</section>
+
+<div class="container add-todo-box-container">
+    <div class="add-todo">
+        <form #form = "ngForm" (ngSubmit) = "onFormSubmit(form)">
+            <h2 class = "title is-4">New task</h2>
+            
+            <div class="field is-grouped">
+                <p class="control is-expanded">
+                  <input ngModel  #todoTextfield = "ngModel" name = "text" required minlength="2" maxlength = "100"class="input" type="text" placeholder="Enter your new task here">
+                </p>
+                <p class="control">
+                  <button class="button alt-gradient-button">
+                      <i class="material-icons">add</i>
+                    Add
+                  </button>
+                </p>
+              </div>
+              <div *ngIf = "todoTextfield.invalid && showValidationErrors">
+                <p class="help is-danger" *ngIf = "todoTextfield.errors?.required">Form is invalid!</p>
+                <p class="help is-danger" *ngIf = "todoTextfield.errors?.minlength">It should be at least 2 characters</p>
+              </div>
+              
+        </form>
+    
+    </div>
+</div>
+
+<section class="section">
+    <div class="container">
+
+        <div class="to-do-list">
+           <app-to-do-item 
+            *ngFor = "let todo of todos" 
+            [todo] = "todo" 
+            (todoClicked) = "setComplete(todo)"
+            (editClicked) = "editTodo(todo)"
+            (deleteClicked) = "deleteTodo(todo)"
+            ></app-to-do-item>
+        </div>
+
+
+    </div>
+</section>

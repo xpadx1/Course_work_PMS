@@ -1,0 +1,23 @@
+<div class="to-do-item" (click) = "onTodoClick()" [class.completed]="todo.completed">
+    <div class="check-box">
+        <i class="material-icons">check</i>
+    </div>
+    <div class="to-do-text">
+        {{ todo.text }}
+    </div>
+    <div class="controls-box" (click) = "$event.stopPropagation()">
+
+        <div class="controls-button" 
+        [appTooltip] = 'editValue' 
+        (click) = "onEditClicked()">
+            <i class="material-icons">edit</i>
+        </div>
+
+        <div class="controls-button is-dangerous" 
+        [appTooltip] = 'deleteValue'
+        (click) = "onDeleteClicked()">
+            <i class="material-icons">delete</i>
+        </div>
+
+    </div>
+</div>
