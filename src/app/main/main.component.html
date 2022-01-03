@@ -5,7 +5,7 @@
         </span>
         <p class = "title">C_W_PMS</p>
     </div>
-    <nav class="sections">
+    <nav class="sections" *ngIf = "!isLoginPage">
 
         <div class="nav-item">
             <a>Tasks management</a>
@@ -31,6 +31,6 @@
     </div>
 </div>
 
-<app-middle-title></app-middle-title>
-<app-board></app-board>
+<!-- <app-middle-title></app-middle-title>
+<app-board></app-board> -->
 

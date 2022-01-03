@@ -62,5 +62,31 @@ a{
     }
 }
 
+input{
+    min-width: 355px;
+    min-height: 30px;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-bottom: 25px;
+    
+}
+
+button{
+    border: none;
+    background: #4b4c61;
+    color: white;
+    font-weight: 600;
+    opacity: 0.9;
+    min-height: 36px;
+    min-width: 80px;
+    border-radius: 5px;
+    text-align: center;
+    
+    &:hover{
+        opacity: 0.6;
+        transition: 0.3s;
+    }
+}
+
 
 

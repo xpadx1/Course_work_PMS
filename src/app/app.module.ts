@@ -12,6 +12,7 @@ import { TooltipDirective } from './shared/tooltip.directive';
 import { MainComponent } from './main/main.component';
 import { MiddleTitleComponent } from './middle-title/middle-title.component';
 import { BoardComponent } from './board/board.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { BoardComponent } from './board/board.component';
     TooltipDirective,
     MainComponent,
     MiddleTitleComponent,
-    BoardComponent
+    BoardComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
