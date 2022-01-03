@@ -33,7 +33,7 @@ export class MainComponent implements OnInit {
 
 }
   ngOnInit(): void {
-    this.loginComponent.isLoginPage.subscribe(res => this.isLoginPage = res)
+    this.loginService.isLoginPage.subscribe(res => this.isLoginPage = res)
     console.log(this.isLoginPage)
   }
 

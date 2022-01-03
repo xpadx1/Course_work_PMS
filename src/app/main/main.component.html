@@ -8,11 +8,11 @@
     <nav class="sections" *ngIf = "!isLoginPage">
 
         <div class="nav-item">
-            <a>Tasks management</a>
+            <a [routerLink]="'/todos'">Tasks management</a>
         </div>
         
         <div class="nav-item">
-            <a>Boards</a>
+            <a routerLink = "/board" >Boards</a>
         </div>
 
         <div class="nav-item">
@@ -20,14 +20,14 @@
         </div>
 
     </nav>
-    <div class="user-data" #toggleButton [class.onHover] = "showLogout" (click)="over($event)">
+    <div class="user-data" *ngIf = "!isLoginPage" #toggleButton [class.onHover] = "showLogout" (click)="over($event)">
         <p #insideElement>
             <span class="material-icons">
                 account_circle
             </span>
             Arsenii Shscastlyvyi
         </p>
-        <button class = "logout" *ngIf = "showLogout">Logout</button>
+        <button class = "logout" *ngIf = "showLogout" [routerLink]="'/login'" >Logout</button>
     </div>
 </div>
 

@@ -17,6 +17,10 @@
     width: 190px;
     align-items: center;
     cursor: pointer;
+
+    &:hover{
+        opacity: 0.9
+    }
 }
 
 .onHover{
@@ -29,6 +33,7 @@
     text-align: left;
     position: absolute;
     background: #fff;
+    color: black !important;
     top: 100%;
     width: 100%;
     min-width: 78px;
@@ -70,4 +75,7 @@
     cursor: pointer;
     padding-left: 15px;
     width: 120px;
+    &:hover{
+        opacity: 0.9
+    }
 }

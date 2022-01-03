@@ -9,18 +9,20 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class LoginPageComponent implements OnInit {
 
-  isLoginPage = new BehaviorSubject(false)
+  loginSample = "Arsenii"
+  pswSample = 1234
 
   constructor(
     public loginService: LoginService
   ) { }
 
   ngOnInit(): void {
-    this.isLoginPage.next(true)
+    console.log(1)
+    this.loginService.isLoginPage.next(true)
   }
 
   ngOnDestroy(){
-    this.isLoginPage.next(false)
+    this.loginService.isLoginPage.next(false)
   }
 
 }

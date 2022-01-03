@@ -13,6 +13,7 @@ import { MainComponent } from './main/main.component';
 import { MiddleTitleComponent } from './middle-title/middle-title.component';
 import { BoardComponent } from './board/board.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { ErrorUrlComponent } from './error-url/error-url.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MainComponent,
     MiddleTitleComponent,
     BoardComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    ErrorUrlComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [BoardComponent, LoginPageComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
