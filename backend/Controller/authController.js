@@ -34,7 +34,7 @@ class AuthController {
       const message = {
         to: email, // list of receivers
         subject: "registration", // Subject line
-        text: "your account has been successfully created" // plain text body
+        text: "Your account has been successfully created" // plain text body
       }
 
       mailer(message);
