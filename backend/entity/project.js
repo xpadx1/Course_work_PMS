@@ -3,30 +3,30 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-const User = sequelize.define("users", {
+const Project = sequelize.define("projects", {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,
-        allowNull: false,
+        allowNull: false
     },
     name: {
         type: Sequelize.STRING,
-        allowNull: false,
-    },
-    email: {
-        type: Sequelize.STRING,
         allowNull: true,
+        defaultValue: "New Project",
     },
-    role: {
-        type: Sequelize.STRING,
-        allowNull: true,
-        defaultValue: "EXECUTOR",
-    },
-    password: {
+    type: {
         type: Sequelize.STRING,
         allowNull: false,
     },
+    description: {
+        type: Sequelize.STRING,
+        allowNull: true,
+    },
+    teamleadId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    }
 });
 
-export { User };
+export { Project };
