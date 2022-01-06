@@ -1,5 +1,6 @@
 import Router from 'express';
 import { Tasks } from './entity/task.js';
+import { Role } from './entity/role.js';
 import { AuthController } from './Controller/authController.js';
 import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
