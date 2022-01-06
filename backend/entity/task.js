@@ -18,10 +18,6 @@ const Tasks = sequelize.define("tasks", {
         type: Sequelize.STRING,
         allowNull: false
     },
-    idproject: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-    },
     idcreator: {
         type: Sequelize.INTEGER,
         allowNull: false
