@@ -5,10 +5,12 @@ import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
-
+import { Filter } from './filter/filter.js';
+import { projectContoller } from './Controller/projectController.js';
 const controllerAuth = new AuthController();
 const controllerTask = new taskController();
-
+const controllerProject = new projectContoller();
+const filterTsk = new Filter();
 const router = new Router();
 
 // Authorization
@@ -36,6 +38,15 @@ router.get('/tasks/:id', controllerTask.getOneTask); // may be add validation ch
 
 router.delete('/tasks/:id', controllerTask.deleteTask); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getOneTask
 
+// filter
+router.get('/filter', filterTsk.filterTask);
+
+// project
+
+router.post('/project', controllerProject.createProject);
+router.put('/project',controllerProject.updateProject);
+router.get('/project',controllerProject.getAllProjects);
+router.delete('project', controllerProject.deleteProjects);
 
 router.use((err, request, response, next) => {
     console.log(err);

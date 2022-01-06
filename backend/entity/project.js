@@ -22,10 +22,6 @@ const Project = sequelize.define("projects", {
     description: {
         type: Sequelize.STRING,
         allowNull: true,
-    },
-    teamleadId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
     }
 });
 

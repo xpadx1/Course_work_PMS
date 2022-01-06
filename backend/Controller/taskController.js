@@ -34,11 +34,11 @@ class taskController {
             } = req.body;
 
             // add check on access other humans tasks 
-            const tasks = await Tasks.findAll({
+            const tasks = await Tasks.findAll(/*{
                 where: {
                     idexecutor: id
                 }
-            });
+            }*/);
             res.json(tasks);
 
         } catch (e) {
@@ -88,13 +88,14 @@ class taskController {
             });
 
             // check access to change type. Only for EXECUTOR
-            if (idexecutor != task.idexecutor) {
+           if (idexecutor != task.idexecutor) {
                 res.status(403).json({
                     message: 'You have no access to this task'
                 });
             } else {
                 res.json(task);
             }
+           
 
         } catch (e) {
             res.json(e);
