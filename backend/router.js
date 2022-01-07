@@ -1,5 +1,4 @@
-import Router from 'express'
-import { Tasks } from './entity/task.js';
+import { Router } from 'express'
 import { AuthController } from './Controller/authController.js';
 import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
