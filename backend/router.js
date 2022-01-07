@@ -21,18 +21,12 @@ router.post('/login', controllerAuth.login);
 //users
 router.get('/users', checkJwt, controllerAuth.getAllUsers);
 
-// some functions that access special roles (example: EXECUTOR) 
-//router.get('/users', checkRole(['EXECUTOR']), SOME_FUNCTION);
-
-
 // tasks
-router.post('/tasks', controllerTask.createtask);
-router.get('/tasks', controllerTask.getMyTasks); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getMyTasks
-router.put('/tasks', controllerTask.updataTaskType); // may be add validation checkRole(['EXECUTOR']) and delete check this in func updataTaskType
-router.get('/tasks/:id', controllerTask.getOneTask); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getOneTask
-
-router.delete('/tasks/:id', controllerTask.deleteTask); // may be add validation checkRole(['EXECUTOR']) and delete check this in func getOneTask
-
+router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
+router.get('/tasks', checkRole(['TEAMLEAD']), controllerTask.getMyTasks); 
+router.put('/tasks', checkRole(['EXECUTOR']), controllerTask.updataTaskType);
+router.get('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.getOneTask);
+router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
 router.use((err, request, response, next) => {
     console.log(err);
