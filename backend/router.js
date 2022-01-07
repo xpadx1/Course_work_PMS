@@ -13,7 +13,7 @@ const router = new Router();
 // Authorization
 router.post('/registration', [
   check('name', 'Field "name" can not be empty').notEmpty(),
-  check('password', 'Password must be greater than 4 lettrs').isLength({min:4})
+  check('password', 'Password must be greater than 4 lettrs').isLength({ min:4 })
 ], controllerAuth.registration);
 
 router.post('/login', controllerAuth.login);
