@@ -1,5 +1,7 @@
+'use strict';
+
 import { User } from '../entity/user.js';
-import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs';
 import { validationResult } from 'express-validator';
 import jwt from 'jsonwebtoken';
 import { option } from '../config/jwt.js';
