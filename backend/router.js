@@ -4,12 +4,10 @@ import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
-import { projectContoller } from './Controller/projectController.js';
 import { Filter } from './filter/filter.js';
 
 const controllerAuth = new AuthController();
 const controllerTask = new taskController();
-const controllerProject = new projectContoller();
 const filterTsk = new Filter();
 
 
