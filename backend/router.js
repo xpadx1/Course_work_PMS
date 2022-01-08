@@ -37,10 +37,10 @@ router.get('/filter', filterTsk.filterTask);
 
 // project
 
-router.post('/project', controllerProject.createProject);
-router.put('/project',controllerProject.updateProject);
-router.get('/project',controllerProject.getAllProjects);
-router.delete('project', controllerProject.deleteProjects);
+// router.post('/project', controllerProject.createProject);
+// router.put('/project',controllerProject.updateProject);
+// router.get('/project',controllerProject.getAllProjects);
+// router.delete('project', controllerProject.deleteProjects);
 
 
 

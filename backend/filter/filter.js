@@ -1,6 +1,6 @@
 import { Project } from '../entity/project.js';
 import { Tasks } from '../entity/task.js';
-const { Op } = require("sequelize");
+// const { Op } = require("sequelize");
 class Filter{
     async filterTask (req, res) {
 
