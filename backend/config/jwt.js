@@ -1,5 +1,5 @@
 'use strict';
 
 export const option = {
-    secret: 'KEY_RANDOM'
+  secret: 'KEY_RANDOM',
 };

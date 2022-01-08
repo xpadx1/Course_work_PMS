@@ -15,7 +15,6 @@ app.get('/', (req, res) => {
     res.status(200).json('Server working');
 });
 
-
 app.use('/', router);
 
 app.set("view engine", "hbs");

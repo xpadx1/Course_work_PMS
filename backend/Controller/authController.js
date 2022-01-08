@@ -30,7 +30,8 @@ class AuthController {
             const {
                 name,
                 password,
-                email
+                email,
+                role
             } = req.body;
 
             const condidate = await User.findOne({
@@ -49,7 +50,8 @@ class AuthController {
             const post = await User.create({
                 name,
                 email,
-                password: hashPass
+                password: hashPass,
+                role
             });
 
             const message = {
@@ -116,7 +118,8 @@ class AuthController {
             const {
                 name,
                 password,
-                email
+                email,
+                role
             } = req.body;
             const users = await User.findAll();
 

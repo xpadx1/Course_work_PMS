@@ -1,11 +1,17 @@
 import Router from 'express';
+import { Tasks } from './entity/task.js';
+import { Role } from './entity/role.js';
+import { UserProjects } from './entity/userProject.js';
+import { Project } from './entity/Project.js';
 import { AuthController } from './Controller/authController.js';
 import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
 import { Filter } from './filter/filter.js';
+import { projectContoller } from './Controller/projectController.js';
 
+const controllerProject = new projectContoller();
 const controllerAuth = new AuthController();
 const controllerTask = new taskController();
 const filterTsk = new Filter();
@@ -37,16 +43,24 @@ router.get('/filter', filterTsk.filterTask);
 
 // project
 
-// router.post('/project', controllerProject.createProject);
-// router.put('/project',controllerProject.updateProject);
-// router.get('/project',controllerProject.getAllProjects);
-// router.delete('project', controllerProject.deleteProjects);
+// tasks
+router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
+router.get('/tasks', checkRole(['EXECUTOR']), controllerTask.getMyTasks);
+router.put('/tasks', checkRole(['EXECUTOR']), controllerTask.updataTaskType);
+router.get('/tasks/:id', checkRole(['EXECUTOR']), controllerTask.getOneTask);
+router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
-
+// project
+router.post('/project',checkRole(['TEAMLEAD']), controllerProject.createProject);
+router.put('/project',controllerProject.updateProject);
+router.get('/project',controllerProject.getAllProjects);
+router.delete('project',checkRole(['TEAMLEAD']), controllerProject.deleteProjects);
+router.post('/project',checkRole(['TEAMLEAD']), controllerProject.assignExecutor);
 
 router.use((err, request, response, next) => {
     console.log(err);
     response.status(500).send("Unexpected server error: " + JSON.stringify(err));
+
 });
 
 export { router };
