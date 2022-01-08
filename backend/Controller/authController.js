@@ -115,12 +115,6 @@ class AuthController {
     async getAllUsers(req, res) {
         try {
 
-            const {
-                name,
-                password,
-                email,
-                role
-            } = req.body;
             const users = await User.findAll();
 
             return res.json({
