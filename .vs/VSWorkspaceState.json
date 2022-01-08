@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\config",
+    "\\backend\\Controller",
+    "\\backend\\entity",
+    "\\backend\\middleware"
+  ],
+  "SelectedNode": "\\backend\\config\\nodemailer.js",
+  "PreviewInSolutionExplorer": false
+}
