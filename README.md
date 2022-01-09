@@ -1,10 +1,10 @@
 # Project management system ( SEF-3 )
 
-* Участники:
-Маковий Виктор - https://github.com/Makov-Vik
-Счастливый Арсений - https://github.com/xpadx1
-Ковалёв Иван - https://github.com/IvanKovalov
-Шухман Вероника - https://github.com/nikelyandjelo
+# Участники:
+* Маковий Виктор - https://github.com/Makov-Vik
+* Счастливый Арсений - https://github.com/xpadx1
+* Ковалёв Иван - https://github.com/IvanKovalov
+* Шухман Вероника - https://github.com/nikelyandjelo
 
 ---
 Описание проекта 
