@@ -22,7 +22,7 @@ class AuthController {
         try {
             const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                return res.status(400).json({
+                return res.json({
                     message: 'Registration error',
                     errors
                 });
@@ -40,7 +40,7 @@ class AuthController {
                 }
             });
             if (condidate) {
-                return res.status(400).json({
+                return res.json({
                     message: "User with same name already exist"
                 });
             }
@@ -66,7 +66,7 @@ class AuthController {
 
         } catch (e) {
             console.log(e);
-            res.status(400).json({
+            res.json({
                 message: 'Registration error'
             });
         }
@@ -87,14 +87,14 @@ class AuthController {
             });
 
             if (!user) {
-                return res.status(400).json({
+                return res.json({
                     message: 'user with same name no found'
                 });
             }
 
             const validPass = bcrypt.compareSync(password, user.password);
             if (!validPass) {
-                return res.status(400).json({
+                return res.json({
                     message: 'wrong password'
                 });
             }
@@ -115,16 +115,28 @@ class AuthController {
     async getAllUsers(req, res) {
         try {
 
-            const {
-                name,
-                password,
-                email,
-                role
-            } = req.body;
             const users = await User.findAll();
 
             return res.json({
                 users
+            });
+
+        } catch (e) {
+            console.log(e);
+            res.status(400).json({
+                message: 'login error'
+            });
+        }
+    }
+
+    async getOneUser(req, res) {
+        try {
+
+            const id = req.params.id;
+            const user = await User.findOne({ where: { id: id } });
+
+            return res.json({
+                user
             });
 
         } catch (e) {

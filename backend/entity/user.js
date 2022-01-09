@@ -16,7 +16,7 @@ const User = sequelize.define('users', {
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: false,
   },
   role: {
     type: Sequelize.STRING,
@@ -27,6 +27,6 @@ const User = sequelize.define('users', {
     type: Sequelize.STRING,
     allowNull: false,
   },
-});
+}, {timestamps: false});
 
 export { User };
