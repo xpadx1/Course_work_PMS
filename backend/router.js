@@ -31,6 +31,7 @@ router.post('/login', controllerAuth.login);
 
 //users
 router.get('/users', checkJwt, controllerAuth.getAllUsers);
+router.get('/users/:id', controllerAuth.getOneUser);
 
 // tasks
 router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
