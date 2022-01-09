@@ -9,11 +9,14 @@ import { checkRole } from './middleware/roleMiddleware.js';
 import { checkAccess } from './middleware/accessMiddleware.js';
 import { Filter } from './Controller/filterController.js';
 import { projectContoller } from './Controller/projectController.js';
+import { Sort } from './Controller/sortController.js';
 
 const controllerProject = new projectContoller();
 const controllerAuth = new AuthController();
 const controllerTask = new taskController();
 const filterTsk = new Filter();
+const sort = new Sort();
+
 
 const router = new Router();
 
@@ -48,7 +51,9 @@ router.get('/filter', filterTsk.filterTask);
 router.get('/filter/tasks', filterTsk.filterTasksByKey);
 router.get('/filter/project', filterTsk.filterProjectByKeyName);
 
-// project
+// sort
+
+router.get('/sort', sort.sortData);
 
 // tasks
 router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
