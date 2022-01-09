@@ -1,13 +1,12 @@
 import Router from 'express';
 import { Tasks } from './entity/task.js';
 import { Role } from './entity/role.js';
-import { UserProjects } from './entity/userProject.js';
-import { Project } from './entity/Project.js';
 import { AuthController } from './Controller/authController.js';
 import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
+import { checkAccess } from './middleware/accessMiddleware.js';
 import { Filter } from './filter/filter.js';
 import { projectContoller } from './Controller/projectController.js';
 
@@ -38,9 +37,9 @@ router.get('/users/:id', controllerAuth.getOneUser);
 
 // tasks
 router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
-router.get('/tasks', checkRole(['EXECUTOR']), controllerTask.getMyTasks);
-router.put('/tasks', checkRole(['EXECUTOR']), controllerTask.updataTaskType);
-router.get('/tasks/:id', checkRole(['EXECUTOR']), controllerTask.getOneTask);
+router.get('/tasks',checkAccess(),checkRole(['EXECUTOR']), controllerTask.getMyTasks);
+router.put('/tasks',checkAccess(),checkRole(['EXECUTOR']), controllerTask.updataTaskType);
+router.get('/tasks/:id',checkAccess(),checkRole(['EXECUTOR']), controllerTask.getOneTask);
 router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
 router.get('/filter', filterTsk.filterTask);
@@ -49,9 +48,9 @@ router.get('/filter', filterTsk.filterTask);
 
 // tasks
 router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
-router.get('/tasks', checkRole(['EXECUTOR']), controllerTask.getMyTasks);
-router.put('/tasks', checkRole(['EXECUTOR']), controllerTask.updataTaskType);
-router.get('/tasks/:id', checkRole(['EXECUTOR']), controllerTask.getOneTask);
+router.get('/tasks',checkAccess(),checkRole(['EXECUTOR']), controllerTask.getMyTasks);
+router.put('/tasks',checkAccess(),checkRole(['EXECUTOR']), controllerTask.updataTaskType);
+router.get('/tasks/:id',checkAccess(),checkRole(['EXECUTOR']), controllerTask.getOneTask);
 router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
 // project
