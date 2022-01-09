@@ -3,7 +3,8 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../config/database.js';
 
-const Role = sequelize.define('role',
+const Role = sequelize.define(
+  'role',
   {
     id: {
       type: Sequelize.INTEGER,

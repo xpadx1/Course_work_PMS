@@ -16,16 +16,19 @@ const controllerAuth = new AuthController();
 const controllerTask = new taskController();
 const filterTsk = new Filter();
 
-
 const router = new Router();
 
 // Authorization
-router.post('/registration', [
+router.post(
+  '/registration',
+  [
     check('name', 'Field "name" can not be empty').notEmpty(),
     check('password', 'Password must be greater than 4 lettrs').isLength({
-        min: 4
-    })
-], controllerAuth.registration);
+      min: 4,
+    }),
+  ],
+  controllerAuth.registration
+);
 
 router.post('/login', controllerAuth.login);
 
@@ -52,16 +55,27 @@ router.get('/tasks/:id', checkRole(['EXECUTOR']), controllerTask.getOneTask);
 router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
 // project
-router.post('/project',checkRole(['TEAMLEAD']), controllerProject.createProject);
-router.put('/project',controllerProject.updateProject);
-router.get('/project',controllerProject.getAllProjects);
-router.delete('/project',checkRole(['TEAMLEAD']), controllerProject.deleteProjects);
-router.post('/project/assign',checkRole(['TEAMLEAD']), controllerProject.assignExecutor);
+router.post(
+  '/project',
+  checkRole(['TEAMLEAD']),
+  controllerProject.createProject
+);
+router.put('/project', controllerProject.updateProject);
+router.get('/project', controllerProject.getAllProjects);
+router.delete(
+  '/project',
+  checkRole(['TEAMLEAD']),
+  controllerProject.deleteProjects
+);
+router.post(
+  '/project/assign',
+  checkRole(['TEAMLEAD']),
+  controllerProject.assignExecutor
+);
 
 router.use((err, request, response, next) => {
-    console.log(err);
-    response.status(500).send("Unexpected server error: " + JSON.stringify(err));
-
+  console.log(err);
+  response.status(500).send('Unexpected server error: ' + JSON.stringify(err));
 });
 
 export { router };

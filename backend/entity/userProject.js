@@ -10,14 +10,14 @@ const UserProjects = sequelize.define('userprojects', {
     primaryKey: true,
     allowNull: false,
   },
-  idexecutor:{
+  idexecutor: {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
-  idproject:{
+  idproject: {
     type: Sequelize.INTEGER,
     allowNull: false,
-  }
+  },
 });
 
 export { UserProjects };
