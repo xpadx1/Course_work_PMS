@@ -7,13 +7,16 @@ import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
 import { checkAccess } from './middleware/accessMiddleware.js';
-import { Filter } from './filter/filter.js';
+import { Filter } from './Controller/filterController.js';
 import { projectContoller } from './Controller/projectController.js';
+import { Sort } from './Controller/sortController.js';
 
 const controllerProject = new projectContoller();
 const controllerAuth = new AuthController();
 const controllerTask = new taskController();
 const filterTsk = new Filter();
+const sort = new Sort();
+
 
 const router = new Router();
 
@@ -42,9 +45,15 @@ router.put('/tasks',checkAccess(),checkRole(['EXECUTOR']), controllerTask.updata
 router.get('/tasks/:id',checkAccess(),checkRole(['EXECUTOR']), controllerTask.getOneTask);
 router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
-router.get('/filter', filterTsk.filterTask);
+//filter
 
-// project
+router.get('/filter', filterTsk.filterTask);
+router.get('/filter/tasks', filterTsk.filterTasksByKey);
+router.get('/filter/project', filterTsk.filterProjectByKeyName);
+
+// sort
+
+router.get('/sort', sort.sortData);
 
 // tasks
 router.post('/tasks', checkRole(['TEAMLEAD']), controllerTask.createtask);
