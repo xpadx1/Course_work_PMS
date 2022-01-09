@@ -131,6 +131,24 @@ class AuthController {
             });
         }
     }
+
+    async getOneUser(req, res) {
+        try {
+
+            const id = req.params.id;
+            const user = await User.findOne({ where: { id: id } });
+
+            return res.json({
+                user
+            });
+
+        } catch (e) {
+            console.log(e);
+            res.status(400).json({
+                message: 'login error'
+            });
+        }
+    }
 }
 
 export { AuthController };
