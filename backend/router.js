@@ -8,7 +8,7 @@ import { taskController } from './Controller/taskController.js';
 import { check } from 'express-validator';
 import { checkJwt } from './middleware/authMiddleware.js';
 import { checkRole } from './middleware/roleMiddleware.js';
-import { Filter } from './filter/filter.js';
+import { Filter } from './Controller/filterController.js';
 import { projectContoller } from './Controller/projectController.js';
 
 const controllerProject = new projectContoller();
@@ -40,7 +40,11 @@ router.put('/tasks', checkRole(['EXECUTOR']), controllerTask.updataTaskType);
 router.get('/tasks/:id', checkRole(['EXECUTOR']), controllerTask.getOneTask);
 router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 
+//filter
+
 router.get('/filter', filterTsk.filterTask);
+router.get('/filter/tasks', filterTsk.filterTasksByKey);
+router.get('/filter/project', filterTsk.filterProjectByKeyName);
 
 // project
 
