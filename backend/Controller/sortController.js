@@ -18,6 +18,7 @@ class Sort {
             const sortResult = await DataBase.findAll({
                 order: [[sortfield || Row, sortOrder || 'DESC']]
             })
+            res.json(sortResult);
             }
             catch(e){
                 res.json(e);
