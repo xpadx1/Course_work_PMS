@@ -54,8 +54,8 @@ router.delete('/tasks/:id', checkRole(['TEAMLEAD']), controllerTask.deleteTask);
 router.post('/project',checkRole(['TEAMLEAD']), controllerProject.createProject);
 router.put('/project',controllerProject.updateProject);
 router.get('/project',controllerProject.getAllProjects);
-router.delete('project',checkRole(['TEAMLEAD']), controllerProject.deleteProjects);
-router.post('/project',checkRole(['TEAMLEAD']), controllerProject.assignExecutor);
+router.delete('/project',checkRole(['TEAMLEAD']), controllerProject.deleteProjects);
+router.post('/project/assign',checkRole(['TEAMLEAD']), controllerProject.assignExecutor);
 
 router.use((err, request, response, next) => {
     console.log(err);
