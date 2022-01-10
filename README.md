@@ -24,3 +24,5 @@
 * Express js
 * Postgresql
 * Sequelize
+* Angular 2
+* RxJS
